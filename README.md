@@ -9,4 +9,5 @@
   - Outクラスを修正。別にAreaクラスを作り、OutとHomerunクラスに継承している
   - Hitboxクラスを作成。Areaクラスを継承し、打たれた時の角度を返すangleメソッドが入っている
 - 杉浦
-  - yakyu,gamestate
+  - メインのゲーム自体のプログラムyakyu,gamestateクラスを追加。
+  - Areaクラスをyakyuに移しyakyu内でテスト
