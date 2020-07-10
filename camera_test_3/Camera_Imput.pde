@@ -1,4 +1,3 @@
-Capture camera;
 
 
 class Camera_Imput{
@@ -19,15 +18,26 @@ class Camera_Imput{
   
   void update(){
     camera.loadPixels();
-    image(camera,0,0);
     int i = 0;
     for(int y = r/2; y < height; y += r){
       for(int x = r/2; x < width; x += r){
         Pixels[i].update(camera.pixels[y*width+x]);
-        Pixels[i].judge();
-        Pixels[i].display();
         i++;
       }
+    }
+  }
+  
+  boolean judge(){
+    int cnt = 0;
+    for(int i = 0; i < Pixels.length; i++){
+      if(Pixels[i].Mjudge()){
+        cnt++;
+      }
+    }
+    if(cnt >= 500){
+      return true;
+    }else{
+      return false; 
     }
   }
 }
