@@ -1,18 +1,21 @@
 
-MD[] Pixels;
 int r = 10;
+Camera_Imput imput;
 
 void setup() {
   size(640, 480);
   String[] cameras = Capture.list();
   camera = new Capture(this, cameras[0]);
+  imput = new Camera_Imput(width,height,r,camera);
+  /*
   camera.start();
-  camera.loadPixels();
+  camera.loadPixels();*/
   frameRate(30);
   
   smooth();
   noStroke();
   rectMode(CENTER);
+  /*
   Pixels = new MD[width/r * height/r];
   int i = 0;
   for(int y = r/2; y < height; y += r){
@@ -20,11 +23,12 @@ void setup() {
       Pixels[i] = new MD(x,y,camera.pixels[y*width + x]);
       i++;
     }
-  }
+  }*/
 }
 
 void draw(){
   background(0);
+  /*
   camera.loadPixels();
   int cnt = 0;
   for(int i = 0; i < Pixels.length; i++){
@@ -47,8 +51,6 @@ void draw(){
       i++;
     }
   }
-}
-
-void captureEvent(Capture camera) {
-  camera.read();
+  */
+  imput.update();
 }

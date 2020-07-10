@@ -21,6 +21,7 @@ class Ball{
        batting=false;
      }
      y+=ay;  
+     println("ay="+ay);
    }
    void jude(){
      if(height-100<=y && height-50>=y ){
@@ -29,17 +30,17 @@ class Ball{
        batting=true;
      }    
    }
-   //void ballstart(){
-   //  if(y<0 || y>width){
-   //    if(y>width){
-   //      println(1);
-    //     ay*=-1;
-    //   }
-    //   x=width/2;
-    //   y=height/2;
-    //   cnt++;
-    // }
-  // }
+   void ballstart(){
+     if(y<0 || y>width){
+       if(y>width){
+         println(1);
+       }
+       x=width/2;
+       y=height/2;
+       ay=int(random(1,6));
+       cnt++;
+     }
+   }
 }
 void mouseClicked(){
   b.jude();
