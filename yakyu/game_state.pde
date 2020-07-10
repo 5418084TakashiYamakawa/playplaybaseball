@@ -24,6 +24,7 @@ class Ball{
      }
      y+=ay; 
      x+=ax;
+
    }
    void jude(){
      if(height-100<=y && height-50>=y ){       
@@ -43,6 +44,7 @@ class Ball{
        }
        x=width/2;
        y=height/2;
+
        cnt++;
      }
    }

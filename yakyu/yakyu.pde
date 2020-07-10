@@ -57,6 +57,7 @@ class GameState extends State {
       b.display();
       b.move();
       b.ballstart();
+
     }
     
   }
