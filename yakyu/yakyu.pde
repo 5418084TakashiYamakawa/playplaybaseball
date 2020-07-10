@@ -54,6 +54,7 @@ class GameState extends State {
     if(cnt>5){
       b.display();
       b.move();
+      b.ballstart();
       println(x);
     }
     

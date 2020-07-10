@@ -1,5 +1,4 @@
 import processing.video.*;
-Capture camera;
 
 class MD{
   int x, y, r;
