@@ -7,6 +7,8 @@ void setup() {
   fill(255);
   state = new TitleState();
   b=new Ball(width/2,height/2,10);
+  out=new Out(width/2-50,height-100,width/2+50,height-100,width/2+50,height+50,width/2-50,height+50);
+  hit=new Hitbox(width/2-50,height-100,width/2+50,height-100,width/2+50,height-50,width/2-50,height-50);
 }
 
 void draw() {
@@ -51,17 +53,17 @@ class GameState extends State {
     background(0);
     prtstage();
     text("Game (for 5 seconds)", width * 0.5, height * 0.5);
-    if(cnt>5){
+    if(cnt<5){
       b.display();
       b.move();
       b.ballstart();
-      println(x);
+
     }
     
   }
 
   State decideState() {
-    if (x > 5) { // if ellapsed time is larger than
+    if (cnt >= 5) { // if ellapsed time is larger than
       return new EndingState(); // go to ending
     } 
     return this;

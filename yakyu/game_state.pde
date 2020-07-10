@@ -1,8 +1,10 @@
 Ball b;
-int cnt=30;
-
+int cnt=0;
+Out out;
+Hitbox hit;
 class Ball{
-  int x,y,d,ay=int(random(1,6));
+  float x,y,d,ay=int(random(3,6));
+  float ax=0;
   boolean batting=false,out;
    Ball(int _x,int _y,int _d){
      x=_x;
@@ -20,24 +22,29 @@ class Ball{
        ay*=-1;
        batting=false;
      }
-     y+=ay;  
-     println("ay="+ay);
+     y+=ay; 
+     x+=ax;
+
    }
    void jude(){
-     if(height-100<=y && height-50>=y ){
-       
-       x+=50;
+     if(height-100<=y && height-50>=y ){       
        batting=true;
+       ax+=cos(hit.angle(int(y)));
+       println(ax);
      }    
    }
+   void judgeout(){
+     out=true;
+   }
    void ballstart(){
-     if(y<0 || y>width){
-       if(y>width){
-         println(1);
+    if(y<0 || y>width){
+       if(y<0){
+         ay*=-1;
+         ax=0;
        }
        x=width/2;
        y=height/2;
-       ay=int(random(1,6));
+
        cnt++;
      }
    }
@@ -51,6 +58,8 @@ void prtstage(){
   line(width/2-50,height-100,15,height/2);
   line(width/2+50,height-100,width-15,height/2);
   bezier(100,height/2-50,width/2-100,height/4-50,width/2+100,height/4-50,width-100,height/2-50);
+  hit.display();
+  out.display();
 }
 void drawDiamond(int x, int y, int r) {
   int R;
