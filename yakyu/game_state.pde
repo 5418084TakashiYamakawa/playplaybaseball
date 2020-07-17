@@ -18,10 +18,6 @@ class Ball{
      }
    }
    void move(){     
-     if(batting){
-       ay*=-1;
-       batting=false;
-     }
      y+=ay; 
      x+=ax;
 
@@ -29,19 +25,24 @@ class Ball{
    void jude(){
      if(height-100<=y && height-50>=y ){       
        batting=true;
-       ax+=cos(hit.angle(int(y)));
+       ax+=cos(hit.angle(y));
        println(ax);
      }    
+     batting = hit.hit(y);
+     if(batting){
+       ay *= -1;
+       ax = ay*cos(hit.angle(y));
+       ay = ay*sin(hit.angle(y));
+     }
    }
    void judgeout(){
      out=true;
    }
    void ballstart(){
-    if(y<0 || y>width){
-       if(y<0){
-         ay*=-1;
-         ax=0;
-       }
+    if((y<0 || y>width) || (x<0 || x>width)){
+       ay=int(random(3,6));
+       ax=0;
+       batting = false;
        x=width/2;
        y=height/2;
 
@@ -50,7 +51,9 @@ class Ball{
    }
 }
 void mouseClicked(){
-  b.jude();
+  if(!b.batting){
+    b.jude();
+  }
 }
 void prtstage(){
   fill(204,255,51);
