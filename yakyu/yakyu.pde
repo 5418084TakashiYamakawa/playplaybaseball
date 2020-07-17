@@ -7,7 +7,7 @@ void setup() {
   fill(255);
   state = new TitleState();
   b=new Ball(width/2,height/2,10);
-  out=new Out(width/2-50,height-100,width/2+50,height-100,width/2+50,height+50,width/2-50,height+50);
+  out=new Out(width/2-50,height-50,width/2+50,height-50,width/2+50,height+50,width/2-50,height+50);
   hit=new Hitbox(width/2-50,height-100,width/2+50,height-100,width/2+50,height-50,width/2-50,height-50);
 }
 

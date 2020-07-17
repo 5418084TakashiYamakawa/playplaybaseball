@@ -3,11 +3,19 @@ class Hitbox extends Area{
     super(x1,y1,x2,y2,x3,y3,x4,y4);
   }
   
-  float angle(int ball_y){
+  float angle(float ball_y){
     float hit_area = (y[3] - y[0]) * 1.0;
     float hit_ball = (ball_y - y[0]) * 1.0;
     float angle = PI/4 + (PI/2 * (hit_ball/hit_area));
     return angle;
+  }
+  
+  boolean hit(float ball_y){
+    if(y[0] <= ball_y && y[3] >= ball_y){
+      return true;
+    }else{
+      return false;
+    }
   }
   
   void display(){
