@@ -14,13 +14,13 @@ class Area{
   }
   
   boolean judge(int ball_x, int ball_y){
-    int cnt = 0;
+    int c = 0;
     for(int i = 0; i < 3; i++){
       if(linecrossed(x[i],y[i],x[(i+1)%4],y[(i+1)%4],ball_x,ball_y,width,ball_y) == true){
-        cnt++;
+        c++;
       }
     }
-    if(cnt % 2 == 1){
+    if(c % 2 == 1){
       return true;
     }else{
       return false;
