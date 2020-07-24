@@ -10,7 +10,9 @@ void setup() {
   state = new TitleState();
   b=new Ball(width/2,height/2,10);
   catcher=new Out(width/2-50,height-50,width/2+50,height-50,width/2+50,height+50,width/2-50,height+50);
-  first=new Out(580,500,602,520,575,550,548,530);
+  int n=70;
+  first=new Out(495,445,575,515,555,540,width/2+n,height/2+n);
+  second=new Out(225,515,305,445,width/2-n,height/2+n,245,540);
   hit=new Hitbox(width/2-50,height-100,width/2+50,height-100,width/2+50,height-50,width/2-50,height-50);
   
   String[] cameras = Capture.list();
