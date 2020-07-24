@@ -1,3 +1,5 @@
+int r = 10;
+Camera_Imput imput;
 State state;
 
 void setup() {
@@ -9,13 +11,20 @@ void setup() {
   b=new Ball(width/2,height/2,10);
   catcher=new Out(width/2-50,height-50,width/2+50,height-50,width/2+50,height+50,width/2-50,height+50);
   first=new Out(580,500,602,520,575,550,548,530);
-  
   hit=new Hitbox(width/2-50,height-100,width/2+50,height-100,width/2+50,height-50,width/2-50,height-50);
+  
+  String[] cameras = Capture.list();
+  camera = new Capture(this, cameras[0]);
+  imput = new Camera_Imput(640,480,r,camera);
 }
 
 void draw() {
   background(0);
   state = state.doState();
+  imput.update();
+  if(imput.judge() && !b.batting){
+    b.jude();
+  }
 }
 
 abstract class State {

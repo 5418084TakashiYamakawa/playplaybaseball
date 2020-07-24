@@ -45,7 +45,7 @@ class Ball{
      out=true;
    }
    void ballstart(){
-    if((y<0 || y>width) || (x<0 || x>width) ){
+    if((y<0 || y>width) || (x<0 || x>width)){
        ay=int(random(3,6));
        ax=0;
        batting = false;
