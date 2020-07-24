@@ -10,6 +10,14 @@ class Hitbox extends Area{
     return angle;
   }
   
+  boolean hit(float ball_y){
+    if(y[0] <= ball_y && y[3] >= ball_y){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  
   void display(){
     quad(x[0],y[0],x[1],y[1],x[2],y[2],x[3],y[3]);
   }
