@@ -1,8 +1,8 @@
 class Area{
-  int x[] = new int[4];
-  int y[] = new int[4];
+  float x[] = new float[4];
+  float y[] = new float[4];
   
-  Area(int l_up_x,int l_up_y,int r_up_x,int r_up_y,int r_down_x,int r_down_y,int l_down_x,int l_down_y){
+  Area(float l_up_x,float l_up_y,float r_up_x,float r_up_y,float r_down_x,float r_down_y,float l_down_x,float l_down_y){
     x[0] = l_up_x;
     y[0] = l_up_y;
     x[1] = r_up_x;
@@ -13,14 +13,29 @@ class Area{
     y[3] = l_down_y;
   }
   
-  boolean judge(int ball_x, int ball_y){
+  boolean judge(float ball_x, float ball_y){
     int c = 0;
-    for(int i = 0; i < 3; i++){
-      if(linecrossed(x[i],y[i],x[(i+1)%4],y[(i+1)%4],ball_x,ball_y,width,ball_y) == true){
+    float ax, bx, ay, by;
+    for(int i = 0; i < 4; i++){
+      if(x[i] < x[(i+1)%4]){
+        ax = x[i]-1;
+        bx = x[(i+1)%4]+1;
+      }else{
+        ax = x[i]+1;
+        bx = x[(i+1)%4]-1;
+      }
+      if(y[i] < y[(i+1)%4]){
+        ay = y[i]-1;
+        by = y[(i+1)%4]+1;
+      }else{
+        ay = y[i]+1;
+        by = y[(i+1)%4]-1;
+      }
+      if(linecrossed(ax,ay,bx,by,ball_x,ball_y,width,ball_y) == true){
         c++;
       }
     }
-    if(c % 2 == 1){
+    if(c == 1){
       return true;
     }else{
       return false;
@@ -28,11 +43,11 @@ class Area{
   }
 }
 
-boolean linecrossed(int ax,int ay,int bx,int by,int cx,int cy,int dx,int dy) {
-  int a = (cx - dx)*(ay - cy)+(cy - dy)*(cx - ax);
-  int b = (cx - dx)*(by - cy)+(cy - dy)*(cx - bx);
-  int c = (ax - bx)*(cy - ay)+(ay - by)*(ax - cx);
-  int d = (ax - bx)*(dy - ay)+(ay - by)*(ax - dx);
+boolean linecrossed(float ax,float ay,float bx,float by,float cx,float cy,float dx,float dy) {
+  float a = (cx - dx)*(ay - cy)+(cy - dy)*(cx - ax);
+  float b = (cx - dx)*(by - cy)+(cy - dy)*(cx - bx);
+  float c = (ax - bx)*(cy - ay)+(ay - by)*(ax - cx);
+  float d = (ax - bx)*(dy - ay)+(ay - by)*(ax - dx);
   
   if(c*d < 0 && a*b < 0){
     return true;
