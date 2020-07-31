@@ -46,9 +46,10 @@ class Ball{
      out=true;
    }
    void ballstart(){
-     if((y<0 || y>width) || (x<0 || x>width))
-       point+=100;
-    if((y<0 || y>width) || (x<0 || x>width)){
+     if(ballOut(x,y) >= 1){
+       if(ballOut(x,y) == 2){
+         point += 100;
+       }
        ay=int(random(3,6));
        ax=0;
        batting = false;
@@ -90,4 +91,14 @@ void drawDiamond(int x, int y, int r) {
   }
   endShape(CLOSE);
   popMatrix();
+}
+
+int ballOut(float ballx, float bally){
+  if((bally<0 || bally>width) || (ballx<0 || ballx>width)){
+    return 2;
+  }
+  if(first.judge(ballx, bally) || second.judge(ballx, bally) || catcher.judge(ballx, bally)){
+    return 1;
+  }
+  return 0;
 }
