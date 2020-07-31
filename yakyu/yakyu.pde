@@ -30,16 +30,13 @@ void draw() {
 }
 
 abstract class State {
-  long t_start;
-  float t;
   int x=0;
   State() {
-    t_start = millis();
+   
   }
 
   State doState() {
-    t = (millis() - t_start) / 1000.0;    
-    text(nf(t, 1, 3)  + "sec.", width * 0.5, height * 0.9);
+   
     drawState();
     return decideState();
   }
@@ -65,7 +62,6 @@ class GameState extends State {
   void drawState() {
     background(0);
     prtstage();
-    text("Game (for 5 seconds)", width * 0.5, height * 0.5);
     if(cnt<5){
       b.display();
       b.move();
@@ -85,15 +81,16 @@ class GameState extends State {
 
 class EndingState extends State {
   void drawState() {
-    text("Ending", width * 0.5, height * 0.5);
-    if (t > 3) {
-      cnt=0;
-      text("Press 'a' to restart.", width * 0.5, height * 0.7);
-    }
+    text(point, width * 0.5, height * 0.5);
+    text("point",width * 0.5, height * 0.5+50);     
+    text("Press 'a' to restart.", width * 0.5, height * 0.7);
+    
   }
 
   State decideState() {
-    if (t > 3 && keyPressed && key == 'a') {
+    if (keyPressed && key == 'a') {
+      cnt=0;
+      point=0;
       return new GameState();
     }
     return this;
