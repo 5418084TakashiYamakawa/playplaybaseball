@@ -10,7 +10,7 @@ Out center;
 Out left;
 Out right;
 Hitbox hit;
-class Ball{
+class Ball {
   float x,y,d,ay=int(random(3,6));
   float ax=0;
   boolean batting=false,out;
