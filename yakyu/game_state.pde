@@ -1,5 +1,6 @@
 Ball b;
 int cnt=0;
+int point=0;
 Out catcher;
 Out first;
 Out second;
@@ -45,13 +46,14 @@ class Ball{
      out=true;
    }
    void ballstart(){
+     if((y<0 || y>width) || (x<0 || x>width))
+       point+=100;
     if((y<0 || y>width) || (x<0 || x>width)){
        ay=int(random(3,6));
        ax=0;
        batting = false;
        x=width/2;
        y=height/2;
-
        cnt++;
      }
    }
@@ -71,6 +73,7 @@ void prtstage(){
   hit.display();
   catcher.display();
   first.display();
+  second.display();
 }
 void drawDiamond(int x, int y, int r) {
   int R;
