@@ -5,7 +5,7 @@ class Bat{
   boolean srt = false, rtn = false;
   Bat(int _x, int _y){
     bat = loadImage("bat.png");
-    bat.resize(100,100);
+    bat.resize(50,50);
     x = _x;
     y = _y;
   }
