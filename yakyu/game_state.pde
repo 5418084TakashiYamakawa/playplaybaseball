@@ -10,10 +10,11 @@ Out center;
 Out left;
 Out right;
 Hitbox hit;
+boolean bat_move = false;
 class Ball {
   float x,y,d,ay=int(random(3,6));
   float ax=0;
-  boolean batting=false,out;
+  boolean out;
    Ball(int _x,int _y,int _d){
      x=_x;
      y=_y;
@@ -32,11 +33,9 @@ class Ball {
    }
    void jude(){
      if(height-100<=y && height-50>=y ){       
-       batting=true;
        ax+=cos(hit.angle(y));
      }    
-     batting = hit.hit(y);
-     if(batting){
+     if(hit.hit(y)){
        ay *= -1;
        ax = ay*cos(hit.angle(y));
        ay = ay*sin(hit.angle(y));
@@ -52,7 +51,6 @@ class Ball {
        }
        ay=int(random(3,6));
        ax=0;
-       batting = false;
        x=width/2;
        y=height/2;
        cnt++;
@@ -60,8 +58,8 @@ class Ball {
    }
 }
 void mouseClicked(){
-  println(mouseX,mouseY);
-  if(!b.batting){
+  if(!bat_move){
+    bat_move = true;
     b.jude();
   }
 }
@@ -75,6 +73,15 @@ void prtstage(){
   catcher.display();
   first.display();
   second.display();
+  if(bat_move && bat.do_swing() == false){
+    bat.swing(true);
+  }else if(bat.do_swing() == true){
+    bat.swing(false);
+  }
+  bat.display();
+  if(bat.do_swing() == false){
+    bat_move = false;
+  }
 }
 void drawDiamond(int x, int y, int r) {
   int R;

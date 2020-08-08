@@ -1,6 +1,7 @@
 int r = 10;
 Camera_Imput imput;
 State state;
+Bat bat;
 
 void setup() {
   size(800, 800);
@@ -9,11 +10,12 @@ void setup() {
   fill(255);
   state = new TitleState();
   b=new Ball(width/2,height/2,10);
-  catcher=new Out(width/2-50,height-50,width/2+50,height-50,width/2+50,height+50,width/2-50,height+50);
+  catcher=new Out(width/2-50,height-30,width/2+50,height-30,width/2+50,height+50,width/2-50,height+50);
   int n=70;
   first=new Out(495,445,575,515,555,540,width/2+n,height/2+n);
   second=new Out(225,515,305,445,width/2-n,height/2+n,245,540);
-  hit=new Hitbox(width/2-50,height-100,width/2+50,height-100,width/2+50,height-50,width/2-50,height-50);
+  hit=new Hitbox(width/2-50,height-100,width/2+50,height-100,width/2+50,height-30,width/2-50,height-30);
+  bat = new Bat(320, 730);
   
   String[] cameras = Capture.list();
   camera = new Capture(this, cameras[0]);
@@ -24,7 +26,8 @@ void draw() {
   background(0);
   state = state.doState();
   imput.update();
-  if(imput.judge() && !b.batting){
+  if(imput.judge() && !bat_move){
+    bat_move = true;
     b.jude();
   }
 }
