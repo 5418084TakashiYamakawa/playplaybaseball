@@ -73,7 +73,6 @@ void prtstage(){
   catcher.display();
   first.display();
   second.display();
-  center.display();
   if(bat_move && bat.do_swing() == false){
     bat.swing(true);
   }else if(bat.do_swing() == true){
@@ -83,6 +82,9 @@ void prtstage(){
   if(bat.do_swing() == false){
     bat_move = false;
   }
+  fill(255);
+  text(point, width * 0.1, height * 0.1);
+  text("point",width * 0.1, height * 0.1+50);     
 }
 void drawDiamond(int x, int y, int r) {
   int R;
@@ -105,7 +107,7 @@ int ballOut(float ballx, float bally){
   if((bally<0 || bally>width) || (ballx<0 || ballx>width)){
     return 2;
   }
-  if(first.judge(ballx, bally) || second.judge(ballx, bally) || catcher.judge(ballx, bally) || center.judge(ballx,bally)){
+  if(first.judge(ballx, bally) || second.judge(ballx, bally) || catcher.judge(ballx, bally)){
     return 1;
   }
   return 0;
