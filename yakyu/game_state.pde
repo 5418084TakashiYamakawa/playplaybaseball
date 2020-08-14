@@ -73,6 +73,7 @@ void prtstage(){
   catcher.display();
   first.display();
   second.display();
+  center.display();
   if(bat_move && bat.do_swing() == false){
     bat.swing(true);
   }else if(bat.do_swing() == true){
@@ -104,7 +105,7 @@ int ballOut(float ballx, float bally){
   if((bally<0 || bally>width) || (ballx<0 || ballx>width)){
     return 2;
   }
-  if(first.judge(ballx, bally) || second.judge(ballx, bally) || catcher.judge(ballx, bally)){
+  if(first.judge(ballx, bally) || second.judge(ballx, bally) || catcher.judge(ballx, bally) || center.judge(ballx,bally)){
     return 1;
   }
   return 0;

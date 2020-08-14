@@ -14,6 +14,7 @@ void setup() {
   int n=70;
   first=new Out(495,445,575,515,555,540,width/2+n,height/2+n);
   second=new Out(225,515,305,445,width/2-n,height/2+n,245,540);
+  center=new Out(width/2-40,250, width/2+40, 250, width/2+35, 290, width/2-35, 290);
   hit=new Hitbox(width/2-50,height-100,width/2+50,height-100,width/2+50,height-30,width/2-50,height-30);
   bat = new Bat(320, 730);
   
