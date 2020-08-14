@@ -1,5 +1,5 @@
 class Homerun extends Area{
-  Homerun(int x1,int y1,int x2,int y2,int x3,int y3,int x4,int y4){
+  Homerun(float x1,float y1,float x2,float y2,float x3,float y3,float x4,float y4){
     super(x1,y1,x2,y2,x3,y3,x4,y4);
   }
   
