@@ -14,7 +14,6 @@ void setup() {
   int n=70;
   first=new Out(495,445,575,515,555,540,width/2+n,height/2+n);
   second=new Out(225,515,305,445,width/2-n,height/2+n,245,540);
-  center=new Out(width/2-40,250, width/2+40, 250, width/2+35, 290, width/2-35, 290);
   hit=new Hitbox(width/2-50,height-100,width/2+50,height-100,width/2+50,height-30,width/2-50,height-30);
   bat = new Bat(320, 730);
   
@@ -50,6 +49,8 @@ abstract class State {
 }
 class TitleState extends State {
   void drawState() {
+    prtstage();
+    fill(0);
     text("play baseball", width * 0.5, height * 0.3);
     text("Press 'z' key to start", width * 0.5, height * 0.7);
   }
@@ -85,6 +86,8 @@ class GameState extends State {
 
 class EndingState extends State {
   void drawState() {
+    background(255);
+    fill(0);
     text(point, width * 0.5, height * 0.5);
     text("point",width * 0.5, height * 0.5+50);     
     text("Press 'a' to restart.", width * 0.5, height * 0.7);
