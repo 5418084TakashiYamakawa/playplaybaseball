@@ -2,14 +2,16 @@
 
 class Camera_Imput{
   MD[] Pixels;
+  int r;
   Camera_Imput(int _x,int _y, int _r, Capture camera){
     camera.start();
     camera.loadPixels();
-    
-    Pixels = new MD[_x/_r * _y/_r];
+    r = _r;
+
+    Pixels = new MD[_x/r * _y/r];
     int i = 0;
-    for(int y = r/2; y < _y; y += _r){
-      for(int x = r/2; x < _x; x += _r){
+    for(int y = r/2; y < _y; y += r){
+      for(int x = r/2; x < _x; x += r){
         Pixels[i] = new MD(x,y,camera.pixels[y*width + x]);
         i++;
       }
